@@ -1,0 +1,162 @@
+{%  extends 'layout.html' %}
+{% block styles %}
+    <link href="http://fonts.googleapis.com/css?family=Great+Vibes" rel="stylesheet" type="text/css">
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.css">
+
+    <link href="//maxcdn.bootstrapcdn.com/bootswatch/3.2.0/lumen/bootstrap.min.css" rel="stylesheet">
+
+    <link rel="stylesheet" href="{{ STATIC_URL }}/css/portfolio.css">
+    <link rel="stylesheet" href="{{ STATIC_URL }}/css/photoswipe.css">
+{% endblock %}
+{% block body %}
+    <div class="navbar navbar-default navbar-fixed-top">
+        <div class="container">
+            <div class="navbar-header">
+                <a href="{% url 'index' %}" class="navbar-brand cursive">{{subdomain.url}}</a>
+                  <button class="navbar-toggle" type="button" data-toggle="collapse" data-target="#navbar-main">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                  </button>
+            </div>
+
+            <div class="navbar-collapse collapse" id="navbar-main">
+                <ul class="nav navbar-nav">
+                {% for group in groups %}
+                <li id="nav-{{group.abbv}}"><a href="{%  url 'category_photos' group.pk %}">{{group.title}}</a></li>
+                {% endfor %}
+                <li id="nav-bio"><a href="#bio">Meet Janna</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div id="MainContent">
+        {% for group in groups %}
+            <section id="gallery-container-{{group.id}}" class="container" >
+                <h2 id="{{group.abbv}}">{{group.title}}</h2>
+                <div id="gallery-{{group.id}}" class="gallery"></div>
+                <a id="load-more-{{group.id}}" href="{% url 'photo-list' %}?gid={{group.id}}"></a>
+            </section>
+        {% endfor %}
+        <h2 class="clearfix:before" id="bio">Meet Janna</h2>
+        <div class="container">
+            <p>Aloha!  My name is Janna Hoehn and I am extremely fortunate and lucky to reside on the beautiful island of Maui in the proud 50th state of Hawaii.  Before making Maui my home I owned and <img class="pull-right" id="bio" src="{{ STATIC_URL }}/images/bio.jpg" alt="Janna Hoehn" /> operated a floral shop in Southern California for 13 years.  I was a full-service florist specializing in weddings.  Since moving to Maui in 1992 I have devoted my professional time, creative talents, and energy exclusively to weddings.</p>
+
+            <p>I do take the utmost pride in my chosen profession to make YOUR special wedding day one to remember forever.  From the smallest of details, such as a locket photo of a loved one attached to your bridal bouquet, to the larger details of your ceremony flowers and reception pieces, I deliver to the absolute best of my abilities.</p>
+
+            <p>I am extremely proud of my collaborative work with all of the fine wedding coordinators on Maui and I will continue that effort on YOUR behalf.  Each and every order is a custom order to fit YOUR personal needs.  I will do my utmost to provide the flowers requested but, since Maui currently does not have a flower market, sometimes flowers must be substituted.  In addition, the selected flowers and their delivery are subject to unfavorable and problematic weather and seasonal conditions.  I promise to do my best for YOUR big day.</p>
+
+            </p>I eagerly look forward to working with you to make YOUR wedding dreams, plans, and day come true! </p>
+            <p class="pull-right" style="clear:right;">Aloha Nui Loa (Lots of Love)</p>
+            <p class="cursive pull-right" style="clear:right;">Janna</p>
+        </div>
+    </div>
+{% endblock %}
+{% block scripts %}
+    <!-- Latest compiled and minified JavaScript -->
+    <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script> 
+    <script type="text/javascript" src="{{ STATIC_URL}}js/bower_components/photoswipe/release/3.0.3/lib/klass.min.js"></script>
+    <script type="text/javascript" src="{{ STATIC_URL}}js/bower_components/photoswipe/release/3.0.3/code.photoswipe-3.0.3.js"></script>
+    <script src="{{ STATIC_URL}}js/bower_components/eventEmitter/EventEmitter.js"></script>
+    <script src="{{ STATIC_URL}}js/bower_components/eventie/eventie.js"></script>
+    <script src="{{ STATIC_URL}}js/bower_components/doc-ready/doc-ready.js"></script>
+    <script src="{{ STATIC_URL}}js/bower_components/get-style-property/get-style-property.js"></script>
+    <script src="{{ STATIC_URL}}js/bower_components/get-size/get-size.js"></script>
+    <script src="{{ STATIC_URL}}js/bower_components/jquery-bridget/jquery.bridget.js"></script>
+    <script src="{{ STATIC_URL}}js/bower_components/matches-selector/matches-selector.js"></script>
+    <script src="{{ STATIC_URL}}js/bower_components/outlayer/item.js"></script>
+    <script src="{{ STATIC_URL}}js/bower_components/outlayer/outlayer.js"></script>
+
+    <script src="{{ STATIC_URL}}js/bower_components/masonry/masonry.js"></script>
+    <script src="{{ STATIC_URL}}js/bower_components/imagesloaded/imagesloaded.pkgd.min.js"></script>
+    <script src="{{ STATIC_URL}}js/bower_components/mustache/mustache.js"></script>
+    <script src="{{ STATIC_URL}}js/bower_components/jquery-waypoints/waypoints.js"></script>
+    <script src="{{ STATIC_URL}}js/waypoints-infinite.js"></script>
+    <script type="text/javascript">
+        var MEDIA_URL = "{{ MEDIA_URL }}";
+        $(document).ready(function(){
+            var catTpl = $("#category-tpl").html(),
+                photoTpl = $("#photo-tpl").html();
+            (function($){
+                //initial chain, get the groups
+                    {% for group in groups %}
+                    $("#gallery-{{group.id}}").masonry({
+                         isFitWidth: true,
+                         columnWdith: 306,
+                         itemSelector: ".box"
+                    });
+                    $("#gallery-container-{{group.id}}").waypoint('infinite',{
+                        container: '.gallery',
+                        more: "#load-more-{{group.id}}",
+                        items: '.box',
+                        offset: 'bottom-in-view',
+                        onBeforePageLoad: $.noop,
+                        onAfterPageLoad: function(photos, container){
+                            var photoElements = '';
+
+                            $.each( photos, function(i, photoObj){
+                                photoElements+= renderPhoto(photoObj);
+                            });
+
+                            if(photoElements.length > 0) {
+                                appendPhotos(photoElements,  container)
+                            }
+                        }
+                    });
+
+                    {% endfor %}
+                    // Photo stuff
+                    function renderPhoto(photoObj){
+                        return Mustache.render(photoTpl, photoObj);
+                    }
+
+                    function $photo(photoObj){
+                        return $(renderPhoto(photoObj));
+                    }
+
+                    function onAlways(id){
+                        $("#gallery-" + id).masonry({
+                            isFitWidth: true,
+                            columnWdith: 350
+                        });
+                    }
+
+                    function appendPhotos(photoElements, container){
+                        var $photoElements = $(photoElements);
+
+                        container.append($photoElements);
+
+                        container.imagesLoaded(function(){
+                            container.masonry('appended', $photoElements);
+                            container.masonry('layout');
+                        }).progress( function(imgLoad, image){
+                            var $photo = $(image.img).closest('.box');
+
+                            $photo.removeClass('is-loading');
+
+                            if(!image.isLoaded){
+                                $photo.addClass('is-broken');
+                            }
+                        });
+                    }
+            })($)
+        });
+
+    </script>
+
+    <script id="category-tpl" type="x-tmpl-mustache">
+        {% templatetag openvariable %}/.{% templatetag closevariable %}
+    </script>
+    <script id="photo-tpl" type="x-tmpl-mustache">
+        <div class="box is-loading">
+                <a href="{{ MEDIA_URL }}{% templatetag openvariable %} image {% templatetag closevariable %}" title="{% templatetag openvariable %} category_image {% templatetag closevariable %}" >
+                    <img src="{{MEDIA_URL}}{% templatetag openvariable %} thumb {% templatetag closevariable %}"
+                         alt="{% templatetag openvariable %}category_image{% templatetag closevariable %}"
+                         width="300"
+                    >
+                </a>
+        </div>
+    </script>
+{% endblock %}
