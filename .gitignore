@@ -1,2 +1,6 @@
 *.pyc
-bower_components
+node_modules
+/static
+Dockerfile
+fig.yml
+local.*
