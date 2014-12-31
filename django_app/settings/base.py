@@ -107,7 +107,7 @@ SECRET_KEY = 'g%gdy5xk6@lc02v%jzp@2hg2v@5ny=3vwqlm=i)70_2lwmj_6o'
 TEMPLATE_LOADERS = (
     'django.template.loaders.filesystem.Loader',
     'django.template.loaders.app_directories.Loader',
-#     'django.template.loaders.eggs.Loader',
+    'django.template.loaders.eggs.Loader',
 )
 
 MIDDLEWARE_CLASSES = (
@@ -145,13 +145,13 @@ INSTALLED_APPS = (
 
     'django.contrib.admin',
 
+    'django_fine_uploader',
     'rest_framework',
     'debug_toolbar',
 
     #'api',
     'core',
     'portfolio',
-    'fine_uploader',
 )
 
 EMAIL_SUBJECT_PREFIX = '[subject] '
@@ -195,3 +195,11 @@ REST_FRAMEWORK = {
     # Use Django's standard `django.contrib.auth` permissions,
     # or allow read-only access for unauthenticated users.
 }
+
+# Amazon variables. Be wary and don't hard-code your secret keys here. Rather,
+# set them as environment variables, or read them from a file somehow.
+AWS_CLIENT_SECRET_KEY = os.getenv("AWS_CLIENT_SECRET_KEY")
+AWS_CLIENT_PUBLIC_KEY = os.getenv("AWS_CLIENT_PUBLIC_KEY")
+AWS_SERVER_PUBLIC_KEY = os.getenv("AWS_SERVER_PUBLIC_KEY")
+AWS_SERVER_SECRET_KEY = os.getenv("AWS_SERVER_SECRET_KEY")
+AWS_EXPECTED_BUCKET   = os.getenv("AWS_EXPECTED_BUCKET")

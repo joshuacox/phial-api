@@ -21,5 +21,6 @@ urlpatterns = patterns('',
     #API
     url(r'^g/', include('portfolio.urls')),
     url(r'^', include(router.urls)),
+    url(r'^upload/', include('django_fine_uploader.urls')),
     url(r'^api-auth/', include('rest_framework.urls', namespace='rest_framework'))
 )

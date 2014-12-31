@@ -1,6 +1,5 @@
 from django.conf.urls import patterns, url, include
 from portfolio import views
-from fine_uploader.views import UploadView
 
 urlpatterns = patterns('',
     url(r'^$', 'portfolio.views.index', name='index'),
@@ -13,9 +12,9 @@ urlpatterns = patterns('',
         views.start,
         name="start"),
 
-    url(r'ajax-upload$',
-        UploadView.as_view(),
-        name="ajax_upload"),
+    #url(r'ajax-upload$',
+    #    UploadView.as_view(),
+    #    name="ajax_upload"),
 
 
     #API
