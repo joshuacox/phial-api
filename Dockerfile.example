@@ -23,14 +23,19 @@ RUN DEBIAN_FRONTEND=noninteractive && \
 	apt-get update -y && \
 	apt-get install -y libpq-dev
 
+ADD . /app
+RUN npm install -g bower
+RUN cd /app/portfolio/static/js && bower --allow-root install
+
 # Install app requirements
 ADD requirements.txt /app/requirements.txt
 RUN /env/bin/pip install -r requirements.txt
 
-ADD . /app
-RUN npm install -g bower nvm
-RUN cd /app/portfolio/static/js && bower --allow-root install
+ENV AWS_CLIENT_SECRET_KEY pzv308bSzt/KY74JErNg6Kf4a+ipK5B+81DjymhK
+ENV AWS_CLIENT_PUBLIC_KEY AKIAIPRIODVFGMP5SZXA
+ENV AWS_SERVER_PUBLIC_KEY AKIAIUACHNQYDERNXF7A
+ENV AWS_SERVER_SECRET_KEY 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
+ENV AWS_EXPECTED_BUCKET adairsoftware-fineuploadertest
 
 ENTRYPOINT ["/env/bin/python", "manage.py"]
 CMD ["runserver", "0.0.0.0:8080"]
-
