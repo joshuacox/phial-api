@@ -9,3 +9,4 @@ Markdown==2.4.1
 # Flex Gallery
 Pillow==2.4.0
 django-fine-uploader
+boto
