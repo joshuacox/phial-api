@@ -1,5 +1,5 @@
-from portfolio.models import Category, Photo
-from portfolio.serializers import PhotoSerializer, CategorySerializer
+from flexgallery.models import Category, Photo
+from flexgallery.serializers import PhotoSerializer, CategorySerializer
 from rest_framework import generics, permissions
 
 from rest_framework.decorators import api_view
@@ -70,14 +70,14 @@ Web - abstract below this line seperate app meant for public facing things
 def index(request):
     categories = Category.objects.select_related('photos')
     context = {'categories': categories}
-    return render(request, 'portfolio/index.html', context)
+    return render(request, 'flexgallery/index.html', context)
 
 def category_photos(request, pk):
     categories = Category.objects.all()
     selected = Category.objects.filter(id=pk)[0]
 
-    return render(request, 'portfolio/individual-category.html', {'categories': categories, 'selected': selected})
+    return render(request, 'flexgallery/individual-category.html', {'categories': categories, 'selected': selected})
 
 def start(request):
     context = { 'categories': Category.objects.all(), 'csrf_token': get_token(request), }
-    return render(request, 'portfolio/import.html', context)
+    return render(request, 'flexgallery/import.html', context)
