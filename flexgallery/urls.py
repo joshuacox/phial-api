@@ -1,11 +1,11 @@
 from django.conf.urls import patterns, url, include
-from portfolio import views
+from flexgallery import views
 
 urlpatterns = patterns('',
-    url(r'^$', 'portfolio.views.index', name='index'),
+    url(r'^$', 'flexgallery.views.index', name='index'),
 
     url(r'^category/(?P<pk>\d+)/$',
-        'portfolio.views.category_photos',
+        'flexgallery.views.category_photos',
         name="category_photos"),
 
     url(r'start$',

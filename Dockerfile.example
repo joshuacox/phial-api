@@ -25,7 +25,7 @@ RUN DEBIAN_FRONTEND=noninteractive && \
 
 ADD . /app
 RUN npm install -g bower
-RUN cd /app/portfolio/static/js && bower --allow-root install
+RUN cd /app/flexgallery/static/js && bower --allow-root install
 
 # Install app requirements
 ADD requirements.txt /app/requirements.txt

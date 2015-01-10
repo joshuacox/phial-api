@@ -151,7 +151,7 @@ INSTALLED_APPS = (
 
     #'api',
     'core',
-    'portfolio',
+    'flexgallery',
 )
 
 EMAIL_SUBJECT_PREFIX = '[subject] '

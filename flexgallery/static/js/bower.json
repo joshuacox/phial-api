@@ -1,8 +1,8 @@
 {
-  "name": "portfolio",
-  "version": "0.0.0",
+  "name": "flexgallery",
+  "version": "0.0.1",
   "authors": [
-    "Derek Adair <derek@authentic8.com>"
+    "Derek Adair <d@derekadair.com>"
   ],
   "keywords": [
     "gallery"
