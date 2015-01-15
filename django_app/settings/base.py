@@ -1,5 +1,3 @@
-# Django settings for mauifloralcom project.
-
 import os
 import sys
 
@@ -15,10 +13,6 @@ sys.path.append(os.path.join(PROJECT_ROOT, "lib"))
 DEBUG = True
 TEMPLATE_DEBUG = DEBUG
 
-# django-debug-toolbar settings
-DEBUG_TOOLBAR_CONFIG = {
-    'INTERCEPT_REDIRECTS': False,
-}
 ADMINS = (
     # ('Your Name', 'your_email@example.com'),
 )
