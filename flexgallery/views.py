@@ -61,23 +61,3 @@ def api_root(request, format=None):
         'categories': reverse('category-list', request=request, format=format),
         'photo': reverse('photo-list', request=request, format=format)
     })
-
-"""
-Web - abstract below this line seperate app meant for public facing things
-"""
-
-
-def index(request):
-    categories = Category.objects.select_related('photos')
-    context = {'categories': categories}
-    return render(request, 'flexgallery/index.html', context)
-
-def category_photos(request, pk):
-    categories = Category.objects.all()
-    selected = Category.objects.filter(id=pk)[0]
-
-    return render(request, 'flexgallery/individual-category.html', {'categories': categories, 'selected': selected})
-
-def start(request):
-    context = { 'categories': Category.objects.all(), 'csrf_token': get_token(request), }
-    return render(request, 'flexgallery/import.html', context)

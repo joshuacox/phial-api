@@ -3,7 +3,7 @@
 
 <!-- Fine Uploader CSS
 ====================================================================== -->
-<link href="{{ STATIC_URL }}js/fine-uploader/fineuploader.css" rel="stylesheet">
+<link href="{{ STATIC_URL }}django_fine_uploader/js/bower_components/fine-uploader/_build/fineuploader.css" rel="stylesheet">
 
 {% endblock %}
 
@@ -14,8 +14,8 @@ Demo
 <!-- Fine Uploader DOM Element
 ====================================================================== -->
 <select id="group-selector">
-        {% for group in groups %}
-        <option value="{{group.title}}">{{group.title}}</option>
+        {% for category in categories %}
+        <option value="{{category.title}}">{{category.title}}</option>
         {% endfor %}
     </select>
 <div id="fine-uploader"></div>
@@ -62,7 +62,7 @@ Demo
 
 <!-- Fine Uploader JS
 ====================================================================== -->
-<script src="{{ STATIC_URL}}js/fine-uploader/jquery.fineuploader.js"></script>
+<script src="{{ STATIC_URL}}django_fine_uploader/js/bower_components/fine-uploader/_build/jquery.fineuploader.js"></script>
 <script>
   $(document).ready(function () {
     var uploader = $('#fine-uploader').fineUploader({
