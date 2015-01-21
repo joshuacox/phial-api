@@ -1,7 +1,7 @@
 from flexgallery.models import Category, Photo
 from django_fine_uploader.views import AjaxFileUploader
 
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from django.middleware.csrf import get_token
 
 def index(request):
@@ -16,6 +16,10 @@ def category_photos(request, pk):
     return render(request, 'web/individual-category.html', {'categories': categories, 'selected': selected})
 
 def start(request):
+    #Only logged in users can upload
+    if not request.user.is_authenticated():
+        return redirect('/admin/login/?next=%s' % request.path)
+
     context = { 'categories': Category.objects.all(), 'csrf_token': get_token(request), }
     return render(request, 'web/import.html', context)
 
