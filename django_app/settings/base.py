@@ -191,8 +191,7 @@ REST_FRAMEWORK = {
 
 # Amazon variables. Be wary and don't hard-code your secret keys here. Rather,
 # set them as environment variables, or read them from a file somehow.
-AWS_CLIENT_SECRET_KEY = os.getenv("AWS_CLIENT_SECRET_KEY")
-AWS_CLIENT_PUBLIC_KEY = os.getenv("AWS_CLIENT_PUBLIC_KEY")
-AWS_SERVER_PUBLIC_KEY = os.getenv("AWS_SERVER_PUBLIC_KEY")
-AWS_SERVER_SECRET_KEY = os.getenv("AWS_SERVER_SECRET_KEY")
-AWS_EXPECTED_BUCKET   = os.getenv("AWS_EXPECTED_BUCKET")
+AWS_UPLOAD_CLIENT_SECRET_KEY = os.getenv("AWS_UPLOAD_CLIENT_SECRET_KEY")
+AWS_UPLOAD_CLIENT_KEY        = os.getenv("AWS_UPLOAD_CLIENT_KEY")
+AWS_EXPECTED_BUCKET          = os.getenv("AWS_EXPECTED_BUCKET")
+AWS_MAX_SIZE                 = os.getenv("AWS_MAX_SIZE")

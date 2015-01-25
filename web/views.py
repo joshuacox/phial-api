@@ -1,3 +1,4 @@
+from django.conf import settings
 from flexgallery.models import Category, Photo
 from django_fine_uploader.views import AjaxFileUploader
 
@@ -20,7 +21,12 @@ def start(request):
     if not request.user.is_authenticated():
         return redirect('/admin/login/?next=%s' % request.path)
 
-    context = { 'categories': Category.objects.all(), 'csrf_token': get_token(request), }
+    context = {
+        'categories': Category.objects.all(),
+        'AWS_EXPECTED_BUCKET': settings.AWS_EXPECTED_BUCKET,
+        'AWS_UPLOAD_CLIENT_KEY': settings.AWS_UPLOAD_CLIENT_KEY,
+        'csrf_token': get_token(request),
+    }
     return render(request, 'web/import.html', context)
 
 uploader = AjaxFileUploader()

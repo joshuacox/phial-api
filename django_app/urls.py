@@ -15,6 +15,6 @@ urlpatterns = patterns('',
 
     #API
     url(r'^api/', include('flexgallery.urls')),
-    url(r'^upload/', include('django_fine_uploader.urls')),
+    url(r'^upload/', include('django_fine_uploader.urls', namespace='django_fine_uploader')),
     url(r'^api-auth/', include('rest_framework.urls', namespace='rest_framework'))
 )
