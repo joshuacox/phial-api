@@ -38,6 +38,12 @@
         </script>
     </head>
 <body>
+<select id="category">
+
+    {% for category in categories %}
+        <option value="{{category.title}}">{{category.title}}</option>
+    {% endfor %}
+</select>
     <div id="fine-uploader">       
         <noscript>          
             <p>Please enable JavaScript to use file uploader.</p>

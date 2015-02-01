@@ -6,8 +6,11 @@ from django.shortcuts import render, redirect
 from django.middleware.csrf import get_token
 
 def index(request):
-    categories = Category.objects.select_related('photos')
-    context = {'categories': categories}
+    categories = Category.objects.all()
+    context = {
+            'categories': categories,
+            'csrf_token': get_token(request),
+        }
     return render(request, 'web/index.html', context)
 
 def category_photos(request, pk):

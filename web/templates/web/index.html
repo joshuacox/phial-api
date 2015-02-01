@@ -21,10 +21,11 @@
                   </button>
             </div>
 
+
             <div class="navbar-collapse collapse" id="navbar-main">
                 <ul class="nav navbar-nav">
-                {% for group in groups %}
-                <li id="nav-{{group.abbv}}"><a href="{%  url 'category_photos' group.pk %}">{{group.title}}</a></li>
+                {% for category in categories %}
+                    <li id="nav-{{category.abbv}}"><a href="#{{category.abbv}}">{{category.title}}</a></li>
                 {% endfor %}
                 </ul>
             </div>
@@ -54,22 +55,23 @@
     <script src="{{ STATIC_URL}}js/bower_components/mustache/mustache.js"></script>
     <script src="{{ STATIC_URL}}js/bower_components/jquery-waypoints/waypoints.js"></script>
     <script src="{{ STATIC_URL}}js/waypoints-infinite.js"></script>
+    
     <script type="text/javascript">
         var MEDIA_URL = "{{ MEDIA_URL }}";
         $(document).ready(function(){
             var catTpl = $("#category-tpl").html(),
                 photoTpl = $("#photo-tpl").html();
             (function($){
-                //initial chain, get the groups
-                    {% for group in groups %}
-                    $("#gallery-{{group.id}}").masonry({
+                //initial chain, get the categorys
+                    {% for category in categorys %}
+                    $("#gallery-{{category.id}}").masonry({
                          isFitWidth: true,
                          columnWdith: 306,
                          itemSelector: ".box"
                     });
-                    $("#gallery-container-{{group.id}}").waypoint('infinite',{
+                    $("#gallery-container-{{category.id}}").waypoint('infinite',{
                         container: '.gallery',
-                        more: "#load-more-{{group.id}}",
+                        more: "#load-more-{{category.id}}",
                         items: '.box',
                         offset: 'bottom-in-view',
                         onBeforePageLoad: $.noop,
