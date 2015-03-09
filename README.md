@@ -5,6 +5,7 @@ Flex API is a simple API that wraps amazon AWS and provides a simple and secure 
 
 
 **With Vagrant / [django-dev-box](https://github.com/derek-adair/django-dev-box)**
+
     git clone git@github.com:derek-adair/flex-api.git
     cd flex-api && vagrant up derek-adair/djang-dev-box
 
