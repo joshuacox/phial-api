@@ -4,9 +4,13 @@ Flex API
 Flex API is a simple API that wraps amazon AWS and provides a simple and secure way to upload media to amazon S3, or whatever bckend you wish.  It leverages [django-rest-framework](https://github.com/tomchristie/django-rest-framework) API for maximum flexibility.  The actual file uploading is taken care of using a [django upload package](https://github.com/derek-adair/django-fine-uploader) it is capable of storing files in a number of backends (S3, local storage, Azure, Mongo, etc).
 
 
+**With Vagrant / [django-dev-box](https://github.com/derek-adair/django-dev-box)**
+    git clone git@github.com:derek-adair/flex-api.git
+    cd flex-api && vagrant up derek-adair/djang-dev-box
+
 **With Fig/Docker**
 
-    git clone git@github.com:derek-adair/flexgallery.git
+    git clone git@github.com:derek-adair/flex-api.git
     fig run web migrate
     fig run web collectstatic
     fig up
