@@ -5,8 +5,8 @@ Flex API is a simple API that wraps a number of storage providers, exposing simp
 
 **With Vagrant / [django-dev-box](https://github.com/derek-adair/django-dev-box)**
 
-    git clone git@github.com:derek-adair/flex-api.git
-    cd flex-api && vagrant up derek-adair/djang-dev-box
+    git clone git@github.com:derek-adair/flex-api.git && cd flex-api
+    vagrant init derek-adair/django-dev-box && vagrant up
 
 **With Fig/Docker**
 
