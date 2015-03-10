@@ -16,7 +16,7 @@ Flex API is a simple API that wraps a number of storage providers, exposing simp
     fig up
     #App should be running on localhost:8080 via forwarded docker port.
 
-**Without Fig/Docker**
+**Manual setup**
 
 If you insist on building this manually, be my guest, but its by far easier to learn/install/use Docker and fig.  Before you can do this I'd suggest working in [virtualenv](http://docs.python-guide.org/en/latest/dev/virtualenvs/) with python-2.7.
 
