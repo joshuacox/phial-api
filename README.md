@@ -14,6 +14,7 @@ Flex API is a simple API that wraps a number of storage providers, exposing simp
     fig run web migrate
     fig run web collectstatic
     fig up
+    #App should be running on localhost:8080 via forwarded docker port.
 
 **Without Fig/Docker**
 
