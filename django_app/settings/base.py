@@ -22,9 +22,9 @@ MANAGERS = ADMINS
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'postgres',
+        'NAME': 'flexdb',
         'USER': 'postgres',
-        'HOST': 'db',
+        'HOST': '',
         'PORT': 5432
     }
 }
@@ -147,7 +147,7 @@ INSTALLED_APPS = (
     #'api',
     'core',
     'web',
-    'flexgallery',
+    'flex_api',
 )
 
 EMAIL_SUBJECT_PREFIX = '[subject] '
