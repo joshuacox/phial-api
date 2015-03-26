@@ -9,7 +9,7 @@ class CategorySerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Category
-        fields = ('title', 'urlified', 'abbv', 'description', 'hidden', 'img_count', 'id')
+        fields = ('title', 'abbv', 'description', 'hidden', 'img_count', 'id')
 
 
 class PhotoSerializer(serializers.ModelSerializer):
@@ -18,7 +18,7 @@ class PhotoSerializer(serializers.ModelSerializer):
     class Meta:
         model = Photo
         category = serializers.Field(source='category.title')
-        fields = ('pub_date', 'image', 'thumb', 'description', 'id', 'category', 'category_image')
+        fields = ('pub_date', 'image', 'id', 'category', 'category_image')
 
 class PaginatedPhotoSerializer(pagination.PaginationSerializer):
     """
