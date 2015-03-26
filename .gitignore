@@ -2,6 +2,7 @@
 node_modules
 #Ignore static files that get collected
 ./static/
+media/
 Dockerfile
 fig.yml
 local.*
