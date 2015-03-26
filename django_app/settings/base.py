@@ -140,7 +140,6 @@ INSTALLED_APPS = (
 
     'django.contrib.admin',
 
-    'django_fine_uploader',
     'rest_framework',
     'debug_toolbar',
 
