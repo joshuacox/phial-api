@@ -2,6 +2,7 @@ from flex_api.models import Category, Photo
 from flex_api.serializers import PhotoSerializer, CategorySerializer
 from rest_framework import generics, permissions
 
+from rest_framework.parsers import MultiPartParser, FormParser
 from rest_framework.decorators import api_view
 from rest_framework.response import Response
 from rest_framework.reverse import reverse
@@ -15,7 +16,9 @@ class photo_list(generics.ListCreateAPIView):
     """
     queryset = Photo.objects.all()
     serializer_class = PhotoSerializer
-    permission_classes = (permissions.IsAuthenticatedOrReadOnly,)
+    permission_classes = (permissions.IsAuthenticatedOrReadOnly, )
+    parser_classes = (MultiPartParser, FormParser, )
+    
 
     def get_queryset(self):
         """
