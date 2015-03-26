@@ -10,10 +10,10 @@ urlpatterns = patterns('',
     # Examples:
     # url(r'^blog/', include('blog.urls')),
 
-    url(r'^$', include('web.urls')),
     url(r'^admin/', include(admin.site.urls)),
 
     #API
     url(r'^api/', include('flex_api.urls')),
-    url(r'^api-auth/', include('rest_framework.urls', namespace='rest_framework'))
+    url(r'^api-auth/', include('rest_framework.urls', namespace='rest_framework')),
+    url(r'', include('web.urls')),
 )
