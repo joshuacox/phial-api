@@ -7,3 +7,4 @@ Dockerfile
 fig.yml
 local.*
 .vagrant
+bower_components
