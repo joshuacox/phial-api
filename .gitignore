@@ -4,3 +4,4 @@ static/
 Dockerfile
 fig.yml
 local.*
+.vagrant
