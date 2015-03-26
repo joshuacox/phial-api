@@ -1,6 +1,5 @@
 from django.conf import settings
 from flex_api.models import Category, Photo
-from django_fine_uploader.views import AjaxFileUploader
 
 from django.shortcuts import render, redirect
 from django.middleware.csrf import get_token
@@ -30,6 +29,4 @@ def start(request):
         'AWS_UPLOAD_CLIENT_KEY': settings.AWS_UPLOAD_CLIENT_KEY,
         'csrf_token': get_token(request),
     }
-    return render(request, 'web/import.html', context)
-
-uploader = AjaxFileUploader()
+    return render(request, 'web/upload.html', context)

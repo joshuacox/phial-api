@@ -4,8 +4,6 @@ from django.db import models, transaction
 from django.dispatch import receiver
 
 from django.core.files import File
-from django_fine_uploader.signals import file_uploaded
-#from fine_uploader.views import UploadView
 from PIL import Image
 
 logger = logging.getLogger('django')
