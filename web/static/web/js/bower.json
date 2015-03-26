@@ -1,0 +1,22 @@
+{
+  "name": "flexgallery",
+  "version": "0.0.1",
+  "authors": [
+    "Derek Adair <d@derekadair.com>"
+  ],
+  "keywords": [
+    "gallery"
+  ],
+  "license": "MIT",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "plupload": "~2.1.2"
+  }
+}

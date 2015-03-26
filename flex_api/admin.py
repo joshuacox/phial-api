@@ -1,6 +1,6 @@
 from django.contrib import admin
-from flexgallery.models import Category
-from flexgallery.models import Photo
+from flex_api.models import Category
+from flex_api.models import Photo
 from PIL import Image
 
 admin.site.register(Category)

@@ -1,4 +1,5 @@
 from django.conf.urls import patterns, include, url
+from django.conf.urls.static import static
 from django.contrib import admin
 from django.conf import settings
 
@@ -10,11 +11,10 @@ urlpatterns = patterns('',
     # Examples:
     # url(r'^blog/', include('blog.urls')),
 
-    url(r'^g/', include('web.urls')),
     url(r'^admin/', include(admin.site.urls)),
 
     #API
-    url(r'^api/', include('flexgallery.urls')),
-    url(r'^upload/', include('django_fine_uploader.urls', namespace='django_fine_uploader')),
-    url(r'^api-auth/', include('rest_framework.urls', namespace='rest_framework'))
-)
+    url(r'^api/', include('flex_api.urls')),
+    url(r'^api-auth/', include('rest_framework.urls', namespace='rest_framework')),
+    url(r'', include('web.urls')),
+) + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

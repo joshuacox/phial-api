@@ -66,7 +66,7 @@ MEDIA_ROOT = os.path.join(PROJECT_ROOT, 'media')
 # URL that handles the media served from MEDIA_ROOT. Make sure to use a
 # trailing slash.
 # Examples: "http://media.lawrence.com/media/", "http://example.com/media/"
-MEDIA_URL = 'media/'
+MEDIA_URL = '/media/'
 
 
 
@@ -140,14 +140,13 @@ INSTALLED_APPS = (
 
     'django.contrib.admin',
 
-    'django_fine_uploader',
     'rest_framework',
     'debug_toolbar',
 
     #'api',
     'core',
     'web',
-    'flexgallery',
+    'flex_api',
 )
 
 EMAIL_SUBJECT_PREFIX = '[subject] '
@@ -174,7 +173,11 @@ LOGGING = {
             'level': 'ERROR',
             'filters': ['require_debug_false'],
             'class': 'django.utils.log.AdminEmailHandler'
-        }
+        },
+	'console': {
+            'level': 'DEBUG',
+            'class': 'logging.StreamHandler',
+        },
     },
     'loggers': {
         'django.request': {
@@ -182,10 +185,15 @@ LOGGING = {
             'level': 'ERROR',
             'propagate': True,
         },
+        'django.request': {
+            'handlers': ['console'],
+	    'propagate': True,
+        },
     }
 }
 
 REST_FRAMEWORK = {
+    'DEFAULT_PAGINATION_CLASS': 'rest_framework.pagination.PageNumberPagination',
     # Use Django's standard `django.contrib.auth` permissions,
     # or allow read-only access for unauthenticated users.
 }

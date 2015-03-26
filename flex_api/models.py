@@ -4,8 +4,6 @@ from django.db import models, transaction
 from django.dispatch import receiver
 
 from django.core.files import File
-from django_fine_uploader.signals import file_uploaded
-#from fine_uploader.views import UploadView
 from PIL import Image
 
 logger = logging.getLogger('django')
@@ -15,8 +13,9 @@ class Category(models.Model):
     abbv        = models.CharField(max_length=200)
     description = models.TextField(blank=True)
     img_count   = models.IntegerField()
-    hidden      = models.BooleanField()
+    hidden      = models.BooleanField(default=False)
     order       = models.IntegerField(default=0)
+    owner       = models.ForeignKey('auth.User', related_name="categories")
 
     @transaction.atomic
     def next_sku(self):
@@ -67,18 +66,3 @@ class Photo(models.Model):
 
     class Meta:
         ordering = ('pub_date',)
-
-
-#@receiver(file_uploaded, sender=UploadView)
-#def create_on_upload(sender, path, request, **kwargs):
-#
-#    photo_grp = Category.objects.filter(title__exact=request.POST.get('category'))[0]
-#    img_model = Photo(category=photo_grp)
-#
-#    #TODO - come up with a better way to link image/thumb to model, this seems jenky
-#    path = path.split("/")[-1]
-#    #extract file name from path
-#    img = os.path.splitext( path )
-#    img_model.image = img[0] + img[1]
-#    img_model.thumb = img[0] + '.thumbnail' + ".jpg"
-#    img_model.save()
