@@ -25,7 +25,7 @@
         browse_button : 'pickfiles', // you can pass in id...
         container: document.getElementById('container'), // ... or DOM Element itself
          
-        url : "{% url 'my_s3_upload' %}",
+        url : "{% url 'photo-list' %}",
         multipart_params: {"csrfmiddlewaretoken" : "{{csrf_token}}"},
          
         filters : {
