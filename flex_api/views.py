@@ -1,5 +1,5 @@
-from flexgallery.models import Category, Photo
-from flexgallery.serializers import PhotoSerializer, CategorySerializer
+from flex_api.models import Category, Photo
+from flex_api.serializers import PhotoSerializer, CategorySerializer
 from rest_framework import generics, permissions
 
 from rest_framework.decorators import api_view

@@ -1,7 +1,7 @@
 from django.forms import widgets
 from rest_framework import serializers, pagination
 from django.core.paginator import Paginator
-from flexgallery.models import Category, Photo
+from flex_api.models import Category, Photo
 
 
 class CategorySerializer(serializers.ModelSerializer):

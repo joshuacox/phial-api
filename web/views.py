@@ -1,5 +1,5 @@
 from django.conf import settings
-from flexgallery.models import Category, Photo
+from flex_api.models import Category, Photo
 from django_fine_uploader.views import AjaxFileUploader
 
 from django.shortcuts import render, redirect

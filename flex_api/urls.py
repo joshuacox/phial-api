@@ -1,5 +1,5 @@
 from django.conf.urls import patterns, url, include
-from flexgallery import views
+from flex_api import views
 
 urlpatterns = patterns('',
     url(r'^$', views.api_root),
