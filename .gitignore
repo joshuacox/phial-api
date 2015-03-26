@@ -1,6 +1,7 @@
 *.pyc
 node_modules
-static/
+#Ignore static files that get collected
+./static/
 Dockerfile
 fig.yml
 local.*
