@@ -5,7 +5,7 @@ from flex_api.models import Category, Photo
 
 
 class CategorySerializer(serializers.ModelSerializer):
-    photos = serializers.RelatedField(many=True)
+    photos = serializers.RelatedField(many=True, queryset=Photo.objects.all())
 
     class Meta:
         model = Category
