@@ -1,7 +1,7 @@
 Flex API
 ==================
 
-Flex API is a simple API that wraps a number of storage providers, exposing simple, consistent and secure way to upload and manage media.  It leverages [django-rest-framework](https://github.com/tomchristie/django-rest-framework) API for the out of the box bells and whistles.  The actual file uploading is taken care of using a [django upload package](https://github.com/derek-adair/django-fine-uploader).
+Flex API is a project that exposes a consistant way to interact with multiple storage engines.  It leverages [django-rest-framework](https://github.com/tomchristie/django-rest-framework) for file uploading, parsing and all the goodies that DRF offers, as well as django storages to add to django's storage engine's.
 
 **With Vagrant / [django-dev-box](https://github.com/derek-adair/django-dev-box)**
 
