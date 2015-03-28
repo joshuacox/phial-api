@@ -65,18 +65,3 @@ class Photo(models.Model):
 
     class Meta:
         ordering = ('pub_date',)
-
-
-#@receiver(file_uploaded, sender=UploadView)
-#def create_on_upload(sender, path, request, **kwargs):
-#
-#    photo_grp = Category.objects.filter(title__exact=request.POST.get('category'))[0]
-#    img_model = Photo(category=photo_grp)
-#
-#    #TODO - come up with a better way to link image/thumb to model, this seems jenky
-#    path = path.split("/")[-1]
-#    #extract file name from path
-#    img = os.path.splitext( path )
-#    img_model.image = img[0] + img[1]
-#    img_model.thumb = img[0] + '.thumbnail' + ".jpg"
-#    img_model.save()
