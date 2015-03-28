@@ -19,10 +19,3 @@ class PhotoSerializer(serializers.ModelSerializer):
         model = Photo
         category = serializers.Field(source='category.title')
         fields = ('pub_date', 'image', 'id', 'category', 'category_image')
-
-class PaginatedPhotoSerializer(pagination.PaginationSerializer):
-    """
-    Serializes page objects of photo querysets.
-    """
-    class Meta:
-        object_serializer_class = PhotoSerializer
