@@ -5,15 +5,15 @@ from flex_api.models import Category, Photo
 
 
 class CategorySerializer(serializers.ModelSerializer):
-    photos = serializers.RelatedField(many=True, queryset=Photo.objects.all())
+    photos = serializers.HyperlinkedRelatedField(many=True, read_only=True, view_name="photo-detail")
 
     class Meta:
         model = Category
-        fields = ('title', 'abbv', 'description', 'hidden', 'img_count', 'id')
+        fields = ('title', 'abbv', 'description', 'img_count', 'id', 'photos')
 
 
 class PhotoSerializer(serializers.ModelSerializer):
-    category_image = serializers.Field()
+    category_image = serializers.ReadOnlyField()
 
     class Meta:
         model = Photo
