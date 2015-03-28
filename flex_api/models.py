@@ -13,7 +13,7 @@ class Category(models.Model):
     abbv        = models.CharField(max_length=200)
     description = models.TextField(blank=True)
     img_count   = models.IntegerField()
-    hidden      = models.BooleanField()
+    hidden      = models.BooleanField(default=False)
     order       = models.IntegerField(default=0)
 
     @transaction.atomic
