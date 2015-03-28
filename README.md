@@ -1,17 +1,22 @@
-Flex Gallery
+Flex API
 ==================
 
-Flex gallery is a mobile ready gallery paired with a [django-rest-framework](https://github.com/tomchristie/django-rest-framework) API for maximum flexibility.  Using a [django upload package](https://github.com/derek-adair/django-fine-uploader) it is capable of storing files in a number of backends (S3, local storage, Azure, Mongo, etc).
+Flex API is a project that exposes a consistant way to interact with multiple storage engines.  It leverages [django-rest-framework](https://github.com/tomchristie/django-rest-framework) for file uploading, parsing and all the goodies that DRF offers, as well as django storages to add to django's storage engine's.
 
+**With Vagrant / [django-dev-box](https://github.com/derek-adair/django-dev-box)**
+
+    git clone git@github.com:derek-adair/flex-api.git && cd flex-api
+    vagrant init derek-adair/django-dev-box && vagrant up
 
 **With Fig/Docker**
 
-    git clone git@github.com:derek-adair/flexgallery.git
+    git clone git@github.com:derek-adair/flex-api.git
     fig run web migrate
     fig run web collectstatic
     fig up
+    #App should be running on localhost:8080 via forwarded docker port.
 
-**Without Fig/Docker**
+**Manual setup**
 
 If you insist on building this manually, be my guest, but its by far easier to learn/install/use Docker and fig.  Before you can do this I'd suggest working in [virtualenv](http://docs.python-guide.org/en/latest/dev/virtualenvs/) with python-2.7.
 
