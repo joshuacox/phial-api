@@ -3,11 +3,6 @@ Flex API
 
 Flex API is a project that exposes a consistant way to interact with multiple storage engines.  It leverages [django-rest-framework](https://github.com/tomchristie/django-rest-framework) for file uploading, parsing and all the goodies that DRF offers, as well as django storages to add to django's storage engine's.
 
-**With Vagrant / [django-dev-box](https://github.com/derek-adair/django-dev-box)**
-
-    git clone git@github.com:derek-adair/flex-api.git && cd flex-api
-    vagrant init derek-adair/django-dev-box && vagrant up
-
 **With Fig/Docker**
 
     git clone git@github.com:derek-adair/flex-api.git
