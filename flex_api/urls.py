@@ -4,6 +4,9 @@ from flex_api import views
 urlpatterns = patterns('',
     url(r'^$', views.api_root),
 
+    url(r'^users/$', views.UserList.as_view(), name="user-list"),
+    url(r'^users/(?P<pk>[0-9]+)/$', views.UserDetail.as_view()),
+
     url(r'^photos/$',
         views.photo_list.as_view(),
         name='photo-list'),

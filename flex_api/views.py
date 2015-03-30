@@ -1,14 +1,22 @@
 from flex_api.models import Category, Photo
-from flex_api.serializers import PhotoSerializer, CategorySerializer
+from django.contrib.auth.models import User
+from flex_api.serializers import PhotoSerializer, CategorySerializer, UserSerializer
 from rest_framework import generics, permissions
 
-from rest_framework.parsers import MultiPartParser, FormParser
+from rest_framework.parsers import MultiPartParser, FormParser, FileUploadParser
 from rest_framework.decorators import api_view
 from rest_framework.response import Response
 from rest_framework.reverse import reverse
 
 from django.shortcuts import render
 from django.middleware.csrf import get_token
+
+# import the logging library
+import logging
+
+# Get an instance of a logger
+logger = logging.getLogger('django')
+
 
 class photo_list(generics.ListCreateAPIView):
     """
@@ -17,8 +25,17 @@ class photo_list(generics.ListCreateAPIView):
     queryset = Photo.objects.all()
     serializer_class = PhotoSerializer
     permission_classes = (permissions.IsAuthenticatedOrReadOnly, )
-    parser_classes = (MultiPartParser, FormParser, )
-    
+    parser_classes = (MultiPartParser, FormParser )
+
+
+    #def post(self, request, *args, **kwargs):
+    #    """
+    #    handle file uploads
+    #    """
+    #    logger.info('post:')
+    #    logger.info(dict(request.data))
+
+    #    self.create(request, *args, **kwargs)
 
     def get_queryset(self):
         """
@@ -30,6 +47,7 @@ class photo_list(generics.ListCreateAPIView):
         if gid is not None:
             queryset = queryset.filter(category=gid)
         return queryset
+
 
 
 class photo_detail(generics.RetrieveUpdateDestroyAPIView):
@@ -49,6 +67,9 @@ class category_list(generics.ListCreateAPIView):
     serializer_class = CategorySerializer
     permission_classes = (permissions.IsAuthenticatedOrReadOnly,)
 
+    def perform_create(self, serializer):
+        serializer.save(owner=self.request.user)
+
 
 class category_detail(generics.RetrieveUpdateDestroyAPIView):
     """
@@ -58,9 +79,21 @@ class category_detail(generics.RetrieveUpdateDestroyAPIView):
     serializer_class = PhotoSerializer
     permission_classes = (permissions.IsAuthenticatedOrReadOnly,)
 
+
+class UserList(generics.ListAPIView):
+    queryset = User.objects.all()
+    serializer_class = UserSerializer
+
+
+class UserDetail(generics.RetrieveAPIView):
+    queryset = User.objects.all()
+    serializer_class = UserSerializer
+
+
 @api_view(('GET',))
 def api_root(request, format=None):
     return Response({
         'categories': reverse('category-list', request=request, format=format),
-        'photo': reverse('photo-list', request=request, format=format)
+        'photo': reverse('photo-list', request=request, format=format),
+        'users': reverse('user-list', request=request, format=format),
     })
