@@ -16,6 +16,7 @@ class CategorySerializer(serializers.ModelSerializer):
 class PhotoSerializer(serializers.ModelSerializer):
     #category_image = serializers.ReadOnlyField()
     category = serializers.PrimaryKeyRelatedField(queryset=Category.objects.all())
+    image    = serializers.ImageField()
 
     class Meta:
         model = Photo
