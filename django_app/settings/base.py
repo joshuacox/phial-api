@@ -22,9 +22,9 @@ MANAGERS = ADMINS
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'flexdb',
+        'NAME': 'postgres',
         'USER': 'postgres',
-        'HOST': '',
+        'HOST': 'db',
         'PORT': 5432
     }
 }
