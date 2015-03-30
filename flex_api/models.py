@@ -15,6 +15,7 @@ class Category(models.Model):
     img_count   = models.IntegerField()
     hidden      = models.BooleanField(default=False)
     order       = models.IntegerField(default=0)
+    owner       = models.ForeignKey('auth.User', related_name="categories")
 
     @transaction.atomic
     def next_sku(self):
