@@ -27,6 +27,10 @@ class photo_list(generics.ListCreateAPIView):
     permission_classes = (permissions.IsAuthenticatedOrReadOnly, )
     parser_classes = (MultiPartParser, FormParser )
 
+    def perform_create(self, serializer):
+        data = self.request.data
+        cat = data.get('category')
+        serializer.save(category=Category.objects.get(pk=cat),)
 
     #def post(self, request, *args, **kwargs):
     #    """
