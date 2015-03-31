@@ -1,6 +1,6 @@
-from flex_api.models import Category, Photo
+from phial_api.models import Category, Photo
 from django.contrib.auth.models import User
-from flex_api.serializers import PhotoSerializer, CategorySerializer, UserSerializer
+from phial_api.serializers import PhotoSerializer, CategorySerializer, UserSerializer
 from rest_framework import generics, permissions
 
 from rest_framework.parsers import MultiPartParser, FormParser, FileUploadParser

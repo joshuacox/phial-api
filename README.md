@@ -1,11 +1,11 @@
-Flex API
+Phial API
 ==================
 
-Flex API is a project that exposes a consistant way to interact with multiple storage engines.  It leverages [django-rest-framework](https://github.com/tomchristie/django-rest-framework) for file uploading, parsing and all the goodies that DRF offers, as well as django storages to add to django's storage engine's.
+Phial API is a project that exposes a consistant way to interact with multiple storage engines.  It leverages [django-rest-framework](https://github.com/tomchristie/django-rest-framework) for file uploading, parsing and all the goodies that DRF offers, as well as django storages to add to django's storage engine's.
 
 **With Fig/Docker**
 
-    git clone git@github.com:derek-adair/flex-api.git
+    git clone git@github.com:derek-adair/phial-api.git
     fig run web migrate
     fig run web collectstatic
     fig up

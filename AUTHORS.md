@@ -1,7 +1,7 @@
 Credits
 =======
 
-“flex_api” is written and maintained by Derk Adair.
+“phial_api” is written and maintained by Derk Adair.
 
 
 Contributors

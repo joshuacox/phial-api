@@ -146,7 +146,7 @@ INSTALLED_APPS = (
     #'api',
     'core',
     'web',
-    'flex_api',
+    'phial_api',
 )
 
 EMAIL_SUBJECT_PREFIX = '[subject] '

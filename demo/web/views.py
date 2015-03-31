@@ -1,5 +1,5 @@
 from django.conf import settings
-from flex_api.models import Category, Photo
+from phial_api.models import Category, Photo
 
 from django.shortcuts import render, redirect
 from django.middleware.csrf import get_token
