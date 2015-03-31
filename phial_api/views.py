@@ -32,14 +32,6 @@ class photo_list(generics.ListCreateAPIView):
         cat = data.get('category')
         serializer.save(category=Category.objects.get(pk=cat),)
 
-    #def post(self, request, *args, **kwargs):
-    #    """
-    #    handle file uploads
-    #    """
-    #    logger.info('post:')
-    #    logger.info(dict(request.data))
-
-    #    self.create(request, *args, **kwargs)
 
     def get_queryset(self):
         """
