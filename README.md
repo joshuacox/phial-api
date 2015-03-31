@@ -5,9 +5,15 @@ Flex API is a project that exposes a consistant way to interact with multiple st
 
 **With Fig/Docker**
 
-    git clone git@github.com:derek-adair/flex-api.git
-    fig run web migrate
-    fig run web collectstatic
+    # Grab the code
+    git clone git@github.com:derek-adair/flex-api.git && cd flex-api
+    # spin up the initial containers (this should throw some db errors, django isn't installed)
+    fig up
+    # FROM YOUR HOST MACHINE: Grab the bower deps (This will be baked in starting 0.0.2)
+    cd web/static/web/js && bower install
+    # Create a throw-away container and install django / app tables / super user
+    fig run --rm web syncdb
+    # re-create containers
     fig up
     #App should be running on localhost:8080 via forwarded docker port.
 
