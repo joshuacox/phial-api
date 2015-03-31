@@ -1,7 +1,7 @@
 *.pyc
 node_modules
 #Ignore static files that get collected
-/static/
+/demo/static/
 media/
 Dockerfile
 fig.yml
