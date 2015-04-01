@@ -1,4 +1,4 @@
-FROM derekadair/python-2.7
+FROM derekadair/python-dev
 
 WORKDIR /app
 RUN virtualenv /env
@@ -6,14 +6,11 @@ RUN virtualenv /env
 ENV DEBIAN_FRONTEND noninteractive
 # Required for pscopg2
 RUN apt-get update -y
-RUN apt-get install -y libpq-dev curl nodejs
-RUN curl https://raw.githubusercontent.com/nodesource/distributions/master/deb/setup |bash > /dev/null 2>&1
-RUN apt-get install -y nodejs
-RUN npm install bower -g
+RUN apt-get install -y libpq-dev
 
 ADD . /app
 # bower install
-RUN cd /app/web/static/web/js; bower install
+RUN cd /app/web/static/web/js; bower --allow-root install
 
 # Install app requirements
 ADD requirements.txt /app/requirements.txt
