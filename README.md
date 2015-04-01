@@ -12,6 +12,7 @@ Phial API is a project that exposes a consistant way to interact with multiple s
     # Grab the code
     git clone git@github.com:derek-adair/flex-api.git && cd flex-api
     # spin up the initial containers (this should throw some db errors, django isn't installed)
+    cd demo
     fig up
     # FROM YOUR HOST MACHINE: Grab the bower deps (This will be baked in starting 0.0.2)
     cd web/static/web/js && bower install
