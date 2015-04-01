@@ -5,8 +5,10 @@ RUN virtualenv /env
 
 ENV DEBIAN_FRONTEND noninteractive
 # Required for pscopg2
-RUN apt-get update -y; apt-get install -y libpq-dev
 RUN curl https://raw.githubusercontent.com/nodesource/distributions/master/deb/setup |bash > /dev/null 2>&1
+# above line updates apt so commenting this out for now to avoid hitting the repos twice in a row
+# RUN apt-get update -y
+RUN apt-get install -y libpq-dev curl nodejs
 RUN npm install bower -g
 
 ADD . /app
